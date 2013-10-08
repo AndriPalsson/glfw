@@ -26,12 +26,14 @@ if (APPLE)
     add_executable(Simple MACOSX_BUNDLE simple.c)
     add_executable("Split View" MACOSX_BUNDLE splitview.c)
     add_executable(Wave MACOSX_BUNDLE wave.c)
+    add_executable(MouseMove MACOSX_BUNDLE mouse.c)
 
     set_target_properties(Boing PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "Boing")
     set_target_properties(Gears PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "Gears")
     set_target_properties(Simple PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "Simple")
     set_target_properties("Split View" PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "Split View")
     set_target_properties(Wave PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "Wave")
+    set_target_properties(MouseMove PROPERTIES MACOSX_BUNDLE_NAME "Mouse Move")
 else()
     # Set boring names for executables
     add_executable(boing WIN32 boing.c)
@@ -40,10 +42,11 @@ else()
     add_executable(simple WIN32 simple.c)
     add_executable(splitview WIN32 splitview.c)
     add_executable(wave WIN32 wave.c)
+    add_executable(mouse WIN32 mouse.c)
 endif()
 
 if (MSVC)
-    set(WINDOWS_BINARIES boing gears heightmap simple splitview wave)
+    set(WINDOWS_BINARIES boing gears heightmap simple splitview wave mouse)
 
     # Tell MSVC to use main instead of WinMain for Windows subsystem executables
     set_target_properties(${WINDOWS_BINARIES} PROPERTIES
@@ -51,7 +54,7 @@ if (MSVC)
 endif()
 
 if (APPLE)
-    set(BUNDLE_BINARIES Boing Gears Simple "Split View" Wave)
+    set(BUNDLE_BINARIES Boing Gears Simple "Split View" Wave MouseMove)
 
     set_target_properties(${BUNDLE_BINARIES} PROPERTIES
                           MACOSX_BUNDLE_SHORT_VERSION_STRING ${GLFW_VERSION}
