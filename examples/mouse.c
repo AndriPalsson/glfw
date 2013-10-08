@@ -6,7 +6,7 @@
 // 1: Normal Cursor
 // 2: Hidden Cursor
 // 3: Disabled Cursor
-// F: Toggle Fullscreen
+// M: Toggle force mouse cursor to a fixed location (100,100)
 //
 //========================================================================
 
@@ -19,8 +19,9 @@
 #include <GLFW/glfw3.h>
 
 GLFWwindow* window = NULL;
-int screenMode = GL_FALSE;
+int screenMode = GL_FALSE; //GL_TRUE for fullscreen
 int setCursor = GL_TRUE;
+
 
 int openWindow(int fullscreen);
 
@@ -47,10 +48,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             printf("Cursor Disabled\n");
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             break;
-        case GLFW_KEY_F:
-            screenMode = !screenMode;
-            openWindow(screenMode);
-            break;
+//        case GLFW_KEY_F:
+//            screenMode = !screenMode;
+//            openWindow(screenMode);
+//            break;
         case GLFW_KEY_M:
             setCursor = !setCursor;
             break;
